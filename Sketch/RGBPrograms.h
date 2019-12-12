@@ -1,3 +1,6 @@
+#ifndef __RGBPROGRAMS_H__
+#define __RGBPROGRAMS_H__
+
 void RGBProgramRainbow(uint8_t speed, uint8_t brightness) {
   static uint8_t startIndex = 0;
   static unsigned long lastmillis = millis();
@@ -111,3 +114,4 @@ void RGBProgramTVSimulation (uint8_t brightness, uint8_t currentColor)
 
 
 }
+#endif
