@@ -12,22 +12,14 @@
 #include <AskSinPP.h>
 #include <LowPower.h>
 #include <Register.h>
-#include "analog.h"
 
-#define WSNUM_LEDS    3          //Anzahl angeschlossener LEDs
-#define WSLED_PIN     9          //GPIO Pin LED Anschluss 
+#define WSNUM_LEDS    1          //Anzahl angeschlossener LEDs
+#define WSLED_PIN     9          //GPIO Pin LED Anschluss
 #define WSLED_TYPE    WS2812B    //LED Typ
 #define WSCOLOR_ORDER GRB        //Farbreihenfolge
 //int ENpin = 7;
 #define ENpin    7
-/*
-#define PWM_ENABLED           
-#define PWM_RED_PIN     3
-#define PWM_GREEN_PIN   5
-#define PWM_BLUE_PIN    6
-#define PWM_WHITE_PIN   9       //Pin für weiße LED, auskommentieren, wenn keine weiße LED vorhanden ist
-#define PWM_WHITE_ONLY  true    //Wenn weiße LED vorhanden ist, soll nur diese angesteuert werden wenn die Farbe weiß ist?
-*/
+
 
 #define SLOW_PROGRAM_TIMER     30     //ms Wartezeit für den Übergang
 #define NORMAL_PROGRAM_TIMER   15     //ms Wartezeit für den Übergang
@@ -35,11 +27,7 @@
 #define FIRE_PROGRAM_COOLING   55
 #define FIRE_PROGRAM_SPARKLING 120
 
-#if defined __AVR_ATmega2560__
-#define CONFIG_BUTTON_PIN 13
-#else
 #define CONFIG_BUTTON_PIN 14
-#endif
 #define ONBOARD_LED_PIN   4
 
 #include "RGBCtrl.h"
@@ -62,11 +50,8 @@ const struct DeviceInfo PROGMEM devinfo = {
 /**
    Configure the used hardware
 */
-#if defined __AVR_ATmega2560__
-typedef AskSin<StatusLed<ONBOARD_LED_PIN>, NoBattery, Radio<LibSPI<53>, 2>> HalType;
-#else
+
 typedef AskSin<StatusLed<ONBOARD_LED_PIN>, NoBattery, Radio<LibSPI<10>, 2>> HalType;
-#endif
 
 DEFREGISTER(Reg0, MASTERID_REGS, 0x20, 0x21)
 class Ws28xxList0 : public RegList0<Reg0> {
@@ -97,10 +82,8 @@ void loop() {
   bool worked = hal.runready();
   bool poll = sdev.pollRadio();
   if ( worked == false && poll == false ) {
-#ifndef PWM_ENABLED
-   hal.activity.savePower<Idle<true>>(hal);
-#endif
+   hal.activity.savePower<Sleep<>>(hal);
   }
-  
+
   sdev.handleLED();
 }
