@@ -10,6 +10,7 @@
 
 #ifdef USE_BATTERY
 #define USE_WOR
+#define BAT_CRITICAL 15
 #define BATTSENS BattSensor<AsyncMeter<InternalVCC>>
 #define MODEL 0x50
 #else
@@ -113,6 +114,7 @@ void setup () {
   hal.activity.stayAwake(seconds2ticks(5));
   // measure battery every 4 hours
   hal.battery.init(seconds2ticks(60UL * 60 * 4), sysclock);
+  hal.battery.critical(BAT_CRITICAL);
 #endif
   sdev.initWSLED(WSLED_ENPIN);
   sdev.enableWSLED(true);
@@ -123,6 +125,9 @@ void loop() {
   bool worked = hal.runready();
   bool poll = sdev.pollRadio();
   bool on = (sdev.getCurrentLevel() > 0);
+
+  if (hal.battery.critical())
+    hal.activity.sleepForever(hal);
 
 #ifdef USE_BATTERY
   sdev.enableWSLED(on);
