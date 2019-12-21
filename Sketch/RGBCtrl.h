@@ -1,4 +1,3 @@
-//- -----------------------------------------------------------------------------------------------------------------------
 // AskSin++
 // 2017-03-29 papa Creative Commons - http://creativecommons.org/licenses/by-nc-sa/3.0/de/
 // 2018-08-03 jp112sdl Creative Commons - http://creativecommons.org/licenses/by-nc-sa/3.0/de/
@@ -330,9 +329,10 @@ class DimmerStateMachine {
     bool       toggledimup : 1;
     uint8_t    level, lastonlevel;
     RampAlarm  alarm;
+    bool       lowbat;
 
   public:
-    DimmerStateMachine() : state(AS_CM_JT_NONE), changed(false), toggledimup(true), level(0), lastonlevel(200), alarm(*this) {}
+    DimmerStateMachine() : state(AS_CM_JT_NONE), changed(false), toggledimup(true), level(0), lastonlevel(200), alarm(*this), lowbat(false) {}
     virtual ~DimmerStateMachine () {}
 
     virtual void switchState(__attribute__ ((unused)) uint8_t oldstate, uint8_t newstate) {
@@ -537,6 +537,14 @@ class DimmerStateMachine {
       return level;
     }
 
+    void lowBat(bool l) {
+      lowbat = l;
+    }
+
+    bool lowBat() {
+      return lowbat;
+    }
+
     uint8_t flags () const {
       uint8_t f = delayActive() ? 0x40 : 0x00;
       if ( alarm.destlevel < level) {
@@ -545,6 +553,11 @@ class DimmerStateMachine {
       else if ( alarm.destlevel > level) {
         f |= AS_CM_EXTSTATE_UP;
       }
+
+      if (lowbat == true) {
+        f |= 0x80;
+      }
+
       return f;
     }
 };
@@ -577,6 +590,8 @@ class RGBLEDChannel : public Channel<HalType, DimmerList1, DimmerList3, EmptyLis
     void changed (bool c) {
       DimmerStateMachine::changed = c;
     }
+
+
 
     void patchStatus (Message& msg) {
       switch (this->number()) {

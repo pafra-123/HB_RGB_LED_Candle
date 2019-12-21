@@ -126,14 +126,17 @@ void loop() {
   bool poll = sdev.pollRadio();
   bool on = (sdev.getCurrentLevel() > 0);
 
+  if (sdev.channel(1).lowBat() == false && hal.battery.low() == true) {
+    sdev.channel(1).lowBat(true);
+    sdev.channel(1).changed(true);
+  }
+
   if (hal.battery.critical())
     hal.activity.sleepForever(hal);
 
 #ifdef USE_BATTERY
   sdev.enableWSLED(on);
   if ( worked == false && poll == false && (sdev.getCurrentProgram() == 0 || on == false)) {
-    DPRINT("SLEEP ");DDECLN(millis());
-    Serial.flush();
     hal.sleep();
   }
 #endif
