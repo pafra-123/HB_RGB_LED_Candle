@@ -21,7 +21,9 @@ SW1 auf der Batterieplatine: Config-Taster.<br>
 SW1 auf der Hautplatine: Reset-Taster (optional)<br>
 <br>
 #### Software:
-
+Die Leuchtfarbe ist über die WebUI einstellbar.<br>
+Zusätzlich gibt es ein paar auswählbare Automatikprogramme (Farbdurchlauf / verschiedene Flacker-Programme)<br>
+<br>
 
 ## Platinen:
 #### Hautplatine:<br>
