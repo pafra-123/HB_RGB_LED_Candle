@@ -49,6 +49,7 @@ Zusätzlich gibt es ein paar auswählbare Automatikprogramme (Farbdurchlauf / ve
 #### Power-PCB Teelicht-Version:
 <img src="images/RGB-LED-Candle_USB-Power-PCB.jpg" width="400">
 <br>
+Spannungsversorung wahlweise über Batterie (Version mit 3 mm Flacker-LED) ***oder*** Micro-USB (Version mit WS2812 LED)
 Auf dieser Platine wäre ein Step-Up für den Betrieb mit einer CR2477 Batterie vorgesehen.<br>
 Leider hat sich bei den Tests ergeben, dass die Batterie nur wenige Stunden hält. Aus diesem Grund wurde diese Lösung verworfen.<br>
 Deshalb wird die Bestückung von diesem Teil der Platine auch nicht näher beschrieben.<br>
