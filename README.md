@@ -39,4 +39,10 @@ Zusätzlich gibt es ein paar auswählbare Automatikprogramme (Farbdurchlauf / ve
 <img src="images/RGB-LED-Candle_Main-PCB.jpg" width="400">
 <br>
 <br>
-Batterieplatine Teelicht-Version:<br>
+#### Batterieplatine Teelicht-Version:<br>
+<img src="images/RGB-LED-Candle_USB-PCB.jpg" width="400">
+<br>
+Auf dieser Platine wäre ein Step-Up für den Betrieb mit einer CR2477 Batterie vorgesehen.<br>
+Leider hat sich bei den Tests ergeben, dass die Batterie nur wenige Stunden hält. Aus diesem Grund wurde diese Lösung verworfen.<br>
+Deshalb wird die Bestückung von diesem Teil der Platine auch nicht näher beschrieben.<br>
+<br>
