@@ -57,3 +57,5 @@ Deshalb wird die Bestückung von diesem Teil der Platine auch nicht näher besch
 #### Power-PCB Kerzen-Version:
 <img src="images/RGB-LED-Candle_Batterie-PCB.jpg" width="400">
 <br>
+Spannungsversorung wahlweise über Batterie ***oder*** Micro-USB<br>
+<br>
