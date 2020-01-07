@@ -4,7 +4,7 @@ Dieses Werk ist lizenziert unter einer [Creative Commons Namensnennung - Nicht-k
 
 # RGB-LED-Kerze mit Homematic-Anbindung
 
-<img src="images/RGB-LED-Candle.jpg" width="350">
+<img src="images/RGB-LED-Candle_colors.png">
 
 ## Beschreibung:
 Diese Projekt beschreibt den Aufbau eines RGB-LED Teelichts / einer RGB-LED Kerze mit Homematic-Anbindung.<br>
