@@ -9,7 +9,7 @@ Dieses Werk ist lizenziert unter einer [Creative Commons Namensnennung - Nicht-k
 ## Beschreibung:
 Diese Projekt beschreibt den Aufbau eines RGB-LED Teelichts / einer RGB-LED Kerze mit Homematic-Anbindung.<br>
 Die Leuchtfarbe ist über die WebUI einstellbar.<br>
-Zusätzlich gibt es ein paar auswählbare Automatikprogramme (Farbdurchlauf / verschiedene Flacker-Programme)<br>
+Zusätzlich gibt es ein paar auswählbare Automatikprogramme (Farbdurchlauf / verschiedene Flacker-Programme).<br>
 <br>
 **Folgende Varianten können aufgebaut werden:**<br>
 <br>
@@ -49,10 +49,14 @@ Zusätzlich gibt es ein paar auswählbare Automatikprogramme (Farbdurchlauf / ve
 #### Power-PCB Teelicht-Version:
 <img src="images/RGB-LED-Candle_USB-Power-PCB.jpg" width="400">
 <br>
-Spannungsversorung wahlweise über Batterie (Version mit 3 mm Flacker-LED) ***oder*** Micro-USB (Version mit WS2812 LED)
-Auf dieser Platine wäre ein Step-Up für den Betrieb mit einer CR2477 Batterie vorgesehen.<br>
-Leider hat sich bei den Tests ergeben, dass die Batterie nur wenige Stunden hält. Aus diesem Grund wurde diese Lösung verworfen.<br>
-Deshalb wird die Bestückung von diesem Teil der Platine auch nicht näher beschrieben.<br>
+Spannungsversorung wahlweise über Batterie (Version mit 3 mm Flacker-LED) ***oder*** Micro-USB (Version mit WS2812 LED).<br>
+<br>
+
+_Auf dieser Platine wäre ein Step-Up für den Betrieb mit einer CR2477 Batterie vorgesehen._
+<br>
+_Leider hat sich bei den Tests ergeben, dass die Batterie nur wenige Stunden hält. Aus diesem Grund wurde diese Lösung verworfen.<br>
+Deshalb wird die Bestückung von diesem Teil der Platine auch nicht näher beschrieben._
+<br>
 <br>
 
 #### Power-PCB Kerzen-Version:
