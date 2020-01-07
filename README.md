@@ -33,7 +33,7 @@ Zusätzlich besteht auch noch die Möglichkeit die Platinen als "normales" LED-T
 <br>
 
 #### Software:
-Der Sketch und das Addon für die Homematic wurde von Jerome entwickelt.<br>
+Der Sketch und das Addon für die Homematic wurde von [Jerome](https://github.com/jp112sdl) entwickelt.<br> 
 Die Leuchtfarbe ist über die WebUI einstellbar.<br>
 Zusätzlich gibt es ein paar auswählbare Automatikprogramme (Farbdurchlauf / verschiedene Flacker-Programme)<br>
 <br>
