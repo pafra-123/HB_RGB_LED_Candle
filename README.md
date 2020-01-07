@@ -26,11 +26,12 @@ Zusätzlich besteht auch noch die Möglichkeit die Platinen als "normales" LED-T
 
 ## Funktionen:
 #### Hardware:
-Micro-USB-Anschluss zur Spannungsversorgung.<br>
-3pol Schiebeschalter auf der Batterieplatine: Ein- und Ausschalter (trennt die Batteriespannung)<br>
-SW1 auf der Batterieplatine: Config-Taster.<br>
-SW1 auf der Hautplatine: Reset-Taster (optional)<br>
+- Micro-USB-Anschluss zur Spannungsversorgung (je nach Variante).<br>
+- 3pol Schiebeschalter auf der Batterieplatine: Ein- und Ausschalter (trennt die Batterie- bzw. USB-Spannung)<br>
+- Config-Taster (Power-PCB).<br>
+- Reset-Taster (Hauptplatine - optional)<br>
 <br>
+
 #### Software:
 Der Sketch und das Addon für die Homematic wurde von Jerome entwickelt.<br>
 Die Leuchtfarbe ist über die WebUI einstellbar.<br>
@@ -39,6 +40,7 @@ Zusätzlich gibt es ein paar auswählbare Automatikprogramme (Farbdurchlauf / ve
 <img src="images/WebUI_LED-Candle.png" width="900">
 <br>
 <br>
+
 ## Platinen:
 #### Hauptplatine:
 <img src="images/RGB-LED-Candle_Main-PCB.jpg" width="400">
