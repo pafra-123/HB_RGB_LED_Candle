@@ -37,7 +37,7 @@ Zusätzlich gibt es ein paar auswählbare Automatikprogramme (Farbdurchlauf / ve
 <br>
 
 ## Platinen:
-#### Hautplatine:
+#### Hauptplatine:
 <img src="images/RGB-LED-Candle_Main-PCB.jpg" width="400">
 <br>
 
