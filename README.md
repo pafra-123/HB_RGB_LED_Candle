@@ -8,9 +8,18 @@ Dieses Werk ist lizenziert unter einer [Creative Commons Namensnennung - Nicht-k
 
 ## Beschreibung:
 Diese Projekt beschreibt den Aufbau eines RGB-LED Teelichts / einer RGB-LED Kerze mit Homematic-Anbindung.<br>
+<br>
+**Folgende Varianten können aufgebaut werden:**<br>
+<br>
+:arrow_right: LED-Teelicht mit bedrahteter 3mm Flacker-LED<br>
+:arrow_right: RGB-LED-Teelicht mit WS2812 LED und Spannungsversorung über Micro-USB<br>
+:arrow_right: RGB-Kerze mit WS2812 LED und Spannungsversorung wahlweise über Batterie ***oder*** Micro-USB
+<br>
+<br>
 Die Spannungsversorung erfolgt bei der Teelicht-Variante über Micro-USB.<br>
 Eine Batterieversion ist aktuell in Evaluierung.<br>
 Da die CR2477 Batterie sich allerdings als ungeeignet erwiesen hat, wird diese eine größere Bauform haben und kein Teelicht mehr sein.<br>
+Zusätzlich besteht auch noch die Möglichkeit die Platinen als "normales" LED-Teelicht mit bedrahteter Flacker-LED zu bestücken und zu betreiben.<br>
 <br>
 
 ## Funktionen:
