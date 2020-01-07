@@ -30,8 +30,10 @@ SW1 auf der Batterieplatine: Config-Taster.<br>
 SW1 auf der Hautplatine: Reset-Taster (optional)<br>
 <br>
 #### Software:
+Der Sketch und das Addon für die Homematic wurde von Jerome entwickelt.<br>
 Die Leuchtfarbe ist über die WebUI einstellbar.<br>
 Zusätzlich gibt es ein paar auswählbare Automatikprogramme (Farbdurchlauf / verschiedene Flacker-Programme)<br>
+<img src="images/WebUI_LED-Candle.png" width="900">
 <br>
 
 ## Platinen:
