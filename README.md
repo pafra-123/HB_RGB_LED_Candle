@@ -51,7 +51,6 @@ Zusätzlich gibt es ein paar auswählbare Automatikprogramme (Farbdurchlauf / ve
 <br>
 
 Spannungsversorung wahlweise über Batterie (Version mit 3 mm Flacker-LED) ***oder*** Micro-USB (Version mit WS2812 LED).<br>
-<br>
 
 _Auf dieser Platine wäre ein Step-Up für den Betrieb mit einer CR2477 Batterie vorgesehen._
 <br>
