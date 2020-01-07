@@ -49,6 +49,7 @@ Zusätzlich gibt es ein paar auswählbare Automatikprogramme (Farbdurchlauf / ve
 #### Power-PCB Teelicht-Version:
 <img src="images/RGB-LED-Candle_USB-Power-PCB.jpg" width="400">
 <br>
+
 Spannungsversorung wahlweise über Batterie (Version mit 3 mm Flacker-LED) ***oder*** Micro-USB (Version mit WS2812 LED).<br>
 <br>
 
