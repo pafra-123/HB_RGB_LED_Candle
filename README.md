@@ -8,6 +8,8 @@ Dieses Werk ist lizenziert unter einer [Creative Commons Namensnennung - Nicht-k
 
 ## Beschreibung:
 Diese Projekt beschreibt den Aufbau eines RGB-LED Teelichts / einer RGB-LED Kerze mit Homematic-Anbindung.<br>
+Die Leuchtfarbe ist über die WebUI einstellbar.<br>
+Zusätzlich gibt es ein paar auswählbare Automatikprogramme (Farbdurchlauf / verschiedene Flacker-Programme)<br>
 <br>
 **Folgende Varianten können aufgebaut werden:**<br>
 <br>
@@ -33,9 +35,10 @@ SW1 auf der Hautplatine: Reset-Taster (optional)<br>
 Der Sketch und das Addon für die Homematic wurde von Jerome entwickelt.<br>
 Die Leuchtfarbe ist über die WebUI einstellbar.<br>
 Zusätzlich gibt es ein paar auswählbare Automatikprogramme (Farbdurchlauf / verschiedene Flacker-Programme)<br>
+<br>
 <img src="images/WebUI_LED-Candle.png" width="900">
 <br>
-
+<br>
 ## Platinen:
 #### Hauptplatine:
 <img src="images/RGB-LED-Candle_Main-PCB.jpg" width="400">
