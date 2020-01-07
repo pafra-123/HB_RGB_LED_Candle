@@ -45,7 +45,7 @@ Zusätzlich gibt es ein paar auswählbare Automatikprogramme (Farbdurchlauf / ve
 <br>
 
 #### Power-PCB Teelicht-Version:
-<img src="images/RGB-LED-Candle_USB-PCB.jpg" width="400">
+<img src="images/RGB-LED-Candle_USB-Power-PCB.jpg" width="400">
 <br>
 Auf dieser Platine wäre ein Step-Up für den Betrieb mit einer CR2477 Batterie vorgesehen.<br>
 Leider hat sich bei den Tests ergeben, dass die Batterie nur wenige Stunden hält. Aus diesem Grund wurde diese Lösung verworfen.<br>
