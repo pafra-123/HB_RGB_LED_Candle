@@ -1,4 +1,3 @@
-//- -----------------------------------------------------------------------------------------------------------------------
 // AskSin++
 // 2017-03-29 papa Creative Commons - http://creativecommons.org/licenses/by-nc-sa/3.0/de/
 // 2018-08-03 jp112sdl Creative Commons - http://creativecommons.org/licenses/by-nc-sa/3.0/de/
@@ -330,9 +329,10 @@ class DimmerStateMachine {
     bool       toggledimup : 1;
     uint8_t    level, lastonlevel;
     RampAlarm  alarm;
+    bool       lowbat;
 
   public:
-    DimmerStateMachine() : state(AS_CM_JT_NONE), changed(false), toggledimup(true), level(0), lastonlevel(200), alarm(*this) {}
+    DimmerStateMachine() : state(AS_CM_JT_NONE), changed(false), toggledimup(true), level(0), lastonlevel(200), alarm(*this), lowbat(false) {}
     virtual ~DimmerStateMachine () {}
 
     virtual void switchState(__attribute__ ((unused)) uint8_t oldstate, uint8_t newstate) {
@@ -518,21 +518,12 @@ class DimmerStateMachine {
 
     void setLevel (uint8_t level, uint16_t ramp, uint16_t delay) {
       DPRINT("SetLevel: "); DHEX(level); DPRINT(" "); DHEX(ramp); DPRINT(" "); DHEXLN(delay);
-
-      
-        if (level >= 200) {
-          digitalWrite(ENpin, HIGH);  ///LED-Kerze - 5V_Enable
-        }
-        else if (level == 0) {
-          digitalWrite(ENpin, LOW);  ///LED-Kerze - 5V_Enable
-        }
-
                
       if ( ramp == 0 ) {
         alarm.destlevel = level;
         updateLevel(level);
         setState(level == 0 ? AS_CM_JT_OFF : AS_CM_JT_ON, AskSinBase::intTimeCvt(delay));      
-        FastLED.setBrightness(  level );
+        FastLED.setBrightness(level);
 
       }
       else {
@@ -546,6 +537,14 @@ class DimmerStateMachine {
       return level;
     }
 
+    void lowBat(bool l) {
+      lowbat = l;
+    }
+
+    bool lowBat() {
+      return lowbat;
+    }
+
     uint8_t flags () const {
       uint8_t f = delayActive() ? 0x40 : 0x00;
       if ( alarm.destlevel < level) {
@@ -554,6 +553,11 @@ class DimmerStateMachine {
       else if ( alarm.destlevel > level) {
         f |= AS_CM_EXTSTATE_UP;
       }
+
+      if (lowbat == true) {
+        f |= 0x80;
+      }
+
       return f;
     }
 };
@@ -586,6 +590,8 @@ class RGBLEDChannel : public Channel<HalType, DimmerList1, DimmerList3, EmptyLis
     void changed (bool c) {
       DimmerStateMachine::changed = c;
     }
+
+
 
     void patchStatus (Message& msg) {
       switch (this->number()) {
@@ -734,19 +740,20 @@ class RGBLEDDevice : public MultiChannelDevice<HalType, ChannelType, ChannelCoun
             
       FastLED.show();
 
-#ifdef WSNUM_LEDS
       FastLED.addLeds<WSLED_TYPE, WSLED_PIN, WSCOLOR_ORDER>(leds, WSNUM_LEDS);
-#endif
-      
-#ifdef PWM_ENABLED
-      static AnalogPWMController<PWM_RED_PIN,PWM_GREEN_PIN,PWM_BLUE_PIN,PWM_WHITE_PIN,PWM_WHITE_ONLY> controler;
-      FastLED.addLeds(&controler, leds, 1);
-#endif
       
       DeviceType::channel(2).setColor(0);
     }
 
-    bool handleLED() {
+    uint8_t getCurrentProgram() {
+      return currentProgram;
+    }
+
+    uint8_t getCurrentLevel() {
+      return DeviceType::channel(1).status();
+    }
+
+    void handleLED() {
       DeviceType::channel(3).runProgram(currentProgram);
       FastLED.show();
     }
@@ -764,84 +771,6 @@ class RGBLEDDevice : public MultiChannelDevice<HalType, ChannelType, ChannelCoun
       
       // }
     }
-
-    uint16_t combineChannels () {
-      uint16_t value = 0;
-      for ( uint8_t i = 1; i < DeviceType::channels(); ++i ) {
-        uint8_t level = DeviceType::channel(i).status();
-        switch ( DeviceType::channel(i).getList1().logicCombination() ) {
-          default:
-          case LOGIC_INACTIVE:
-            break;
-          case LOGIC_OR:
-            value = value > level ? value : level;
-            break;
-          case LOGIC_AND:
-            value = value < level ? value : level;
-            break;
-          case LOGIC_XOR:
-            value = value == 0 ? level : (level == 0 ? value : 0);
-            break;
-          case LOGIC_NOR:
-            value = 200 - (value > level ? value : level);
-            break;
-          case LOGIC_NAND:
-            value = 200 - (value < level ? value : level);
-            break;
-          case LOGIC_ORINVERS:
-            level = 200 - level;
-            value = value > level ? value : level;
-            break;
-          case LOGIC_ANDINVERS:
-            level = 200 - level;
-            value = value < level ? value : level;
-            break;
-          case LOGIC_PLUS:
-            value += level;
-            if ( value > 200 ) value = 200;
-            break;
-          case LOGIC_MINUS:
-            if ( level > value ) value = 0;
-            else value -= level;
-            break;
-          case LOGIC_MUL:
-            value = value * level / 200;
-            break;
-          case LOGIC_PLUSINVERS:
-            level = 200 - level;
-            value += level;
-            if ( value > 200 ) value = 200;
-            break;
-            break;
-          case LOGIC_MINUSINVERS:
-            level = 200 - level;
-            if ( level > value ) value = 0;
-            else value -= level;
-            break;
-          case LOGIC_MULINVERS:
-            level = 200 - level;
-            value = value * level / 200;
-            break;
-          case LOGIC_INVERSPLUS:
-            value += level;
-            if ( value > 200 ) value = 200;
-            value = 200 - value;
-            break;
-          case LOGIC_INVERSMINUS:
-            if ( level > value ) value = 0;
-            else value -= level;
-            value = 200 - value;
-            break;
-          case LOGIC_INVERSMUL:
-            value = value * level / 200;
-            value = 200 - value;
-            break;
-        }
-      }
-      // DHEXLN(value);
-      return value;
-    }
-
 };
 
 }
