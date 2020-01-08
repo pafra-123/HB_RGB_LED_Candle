@@ -27,7 +27,7 @@
 
 #define WSNUM_LEDS    1          //Anzahl angeschlossener LEDs
 #define WSLED_PIN     9          //GPIO Pin LED Anschluss 
-#define WSLED_ENPIN   5          //Enable Pin StepUp
+#define WSLED_ENPIN   7          //Enable Pin StepUp
 #define WSLED_TYPE    WS2812B    //LED Typ
 #define WSCOLOR_ORDER GRB        //Farbreihenfolge
 
