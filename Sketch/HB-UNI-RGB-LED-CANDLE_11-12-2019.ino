@@ -67,7 +67,7 @@ class Ws28xxList0 : public RegList0<Reg0> {
 
     void defaults () {
       clear();
-      lowBatLimit(22);
+      lowBatLimit(27);
     }
 };
 
