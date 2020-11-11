@@ -39,6 +39,10 @@ Zusätzlich gibt es ein paar auswählbare Automatikprogramme (Farbdurchlauf / ve
 <br>
 <img src="images/WebUI_LED-Candle.png" width="900">
 <br>
+
+## Schaltplan:
+[Schematics_LED_RGB_Candle_v2.0.pdf](Schematics_LED_RGB_Candle_v2.0.pdf)<br>
+<br>
 <br>
 
 ## Platinen:
